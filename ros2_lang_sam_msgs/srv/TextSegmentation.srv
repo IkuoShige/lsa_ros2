@@ -1,0 +1,10 @@
+# Request
+sensor_msgs/Image        image            # Input image
+string                   text_prompt      # Text prompt for object detection
+float32                  box_threshold    # Threshold for box predictions (optional)
+float32                  text_threshold   # Threshold for text predictions (optional)
+---
+# Response
+sensor_msgs/Image[]      masks            # Generated masks for the detected objects
+float32[]                scores           # Confidence scores for the masks
+sensor_msgs/RegionOfInterest[] boxes      # Detected bounding boxes
