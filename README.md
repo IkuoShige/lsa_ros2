@@ -11,6 +11,15 @@
 - ROS 2サービスインターフェース
 - 結果の可視化と保存
 
+## Quick start: Docker
+
+```bash
+docker build -t lsa_ros2 .
+./run_docker_dev.sh
+./rebuild_in_docker.sh
+./test_ros2_lang_sam.sh
+```
+
 ## インストール方法
 
 ### 前提条件
@@ -29,16 +38,17 @@
 
 ### インストール手順
 
-1. ROS 2ワークスペースに移動:
+1. Clone:
 
 ```bash
-cd /path/to/your/ros2_ws/src
+git clone https://github.com/IkuoShige/lsa_ros2.git
 ```
 
-2. このリポジトリをクローン:
+2. ROS 2ワークスペースのsrcにコピー:
 
 ```bash
-git clone https://github.com/your-username/ros2_lang_sam.git
+cp -r ./ros2_lang_sam /path/to/your/ros2_ws/src/ros2_lang_sam
+cp -r ./ros2_lang_sam_msgs /path/to/your/ros2_ws/src/ros2_lang_sam_msgs
 ```
 
 3. 依存パッケージのインストール:
@@ -51,7 +61,7 @@ pip3 install -r ros2_lang_sam/ros2_lang_sam/requirements.txt
 
 ```bash
 cd /path/to/your/ros2_ws
-colcon build --packages-select ros2_lang_sam ros2_lang_sam_msgs
+colcon build --symlink-install --packages-select ros2_lang_sam ros2_lang_sam_msgs
 ```
 
 5. 環境のセットアップ:
@@ -137,7 +147,7 @@ ros2 run ros2_lang_sam lang_sam_client_node --image input.jpg --prompt "person" 
 
 ### ファイル構成
 
-- `ros2_lang_sam/`: メインパッケージ
+- `lsa_ros2/`: メインパッケージ
   - `ros2_lang_sam/`: Python実装モジュール
     - `lang_sam_server_node.py`: サーバーノードメイン
     - `lang_sam_server.py`: サーバー実装
