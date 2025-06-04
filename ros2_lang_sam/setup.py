@@ -10,7 +10,17 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/server.launch.py']),
+        ('share/' + package_name + '/launch', [
+            'launch/server.launch.py',
+            'launch/segmentation_demo.launch.py',
+            'launch/segmentation_rviz_demo.launch.py',
+            'launch/segmentation_rqt_demo.launch.py',
+            'launch/test_segmentation.launch.py'
+        ]),
+        ('share/' + package_name + '/config', [
+            'config/segmentation_visualization.rviz',
+            'config/segment_visualization.perspective'
+        ]),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -23,6 +33,10 @@ setup(
         'console_scripts': [
             'lang_sam_server_node = ros2_lang_sam.lang_sam_server_node:main',
             'lang_sam_client_node = ros2_lang_sam.lang_sam_client_node:main',
+            'segmentation_node = ros2_lang_sam.segmentation_node:main',
+            'image_publisher_node = ros2_lang_sam.image_publisher_node:main',
+            'result_visualizer_node = ros2_lang_sam.result_visualizer_node:main',
+            'request_publisher_node = ros2_lang_sam.request_publisher_node:main',
         ],
     },
 )

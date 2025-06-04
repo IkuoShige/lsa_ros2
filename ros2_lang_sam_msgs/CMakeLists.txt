@@ -12,6 +12,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/SegmentationRequest.msg"
+  "msg/SegmentationResult.msg"
   "srv/TextSegmentation.srv"
   DEPENDENCIES 
     sensor_msgs
