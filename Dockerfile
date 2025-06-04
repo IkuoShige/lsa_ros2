@@ -36,6 +36,13 @@ RUN apt-get update && apt-get install -y \
     python3-colcon-common-extensions \
     python3-rosdep \
     python3-vcstool \
+    libgl1-mesa-glx \
+    libgl1-mesa-dri \
+    libglu1-mesa \
+    mesa-utils \
+    libxrender1 \
+    libxtst6 \
+    libxi6 \
     && rm -rf /var/lib/apt/lists/*
 
 # Initialize rosdep
@@ -68,6 +75,8 @@ RUN if [ -f /opt/lang-segment-anything/pyproject.toml ]; then \
 
 # Add lang-segment-anything to PYTHONPATH
 ENV PYTHONPATH=$PYTHONPATH:/opt/lang-segment-anything
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+ENV PATH=$PATH:/usr/local/cuda/bin
 
 # # Modify python version requirement in lang-segment-anything
 # RUN if [ -f /opt/lang-segment-anything/pyproject.toml ]; then \
