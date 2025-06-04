@@ -28,4 +28,3 @@ venv.bak/
 .vscode/
 *.log
 .DS_Store
-./results/
